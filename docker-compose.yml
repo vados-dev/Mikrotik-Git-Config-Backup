@@ -1,0 +1,23 @@
+services:
+  backup-server:
+    build: ./server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      ROUTER_AUTH_TOKEN: change-me-use-a-long-random-string
+      GIT_REPO_URL: https://github.com/youruser/router-backups.git
+      GIT_PAT: ""
+      GIT_BRANCH: main
+      GIT_USER_NAME: MikroTik Backup
+      GIT_USER_EMAIL: backup@localhost
+      COMMIT_MESSAGE_FORMAT: "backup: {router_name} config updated at {timestamp}"
+      LISTEN_PORT: "8080"
+    volumes:
+      - ./repo_data:/data/repo
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
