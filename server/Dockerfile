@@ -13,8 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py git_ops.py ./
 
 # /data/repo  — mounted volume; git working tree lives here
-# /data/ssh   — optional mount for SSH deploy key (id_rsa, mode 600)
-RUN mkdir -p /data/repo /data/ssh
+RUN mkdir -p /data/repo
 
 EXPOSE 8080
 

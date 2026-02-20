@@ -14,7 +14,7 @@ GitHub, GitLab, Gitea — anything works. Copy the HTTPS clone URL.
 
 ### 2. Create a Personal Access Token
 
-Go to https://github.com/settings/personal-access-tokens/new and create a fine-grained token with:
+Go to https://github.com/settings/personal-access-tokens/new or https://gitlab.com/-/user_settings/personal_access_tokens and create a fine-grained token with:
 - **Repository access** → your backup repo only
 - **Repository permissions → Contents** → Read and write
 
